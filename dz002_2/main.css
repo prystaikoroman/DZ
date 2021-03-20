@@ -1,0 +1,33 @@
+/*.Entry >p:nth-child(1){background-color: beige}*/
+.header {
+    margin: 0px;
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+.block1 {
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #f1f7fc;
+    border-left: 50px solid beige;
+}
+
+.block1 > p {
+
+}
+
+.block2 {
+    width: 100%;
+    box-sizing: border-box;
+    border-left: 50px solid azure;
+}
+
+.block3 >p {
+    border-left: 50px solid lemonchiffon;
+
+}
+

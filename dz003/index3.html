@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <style>
+            * {
+                margin: 1.5px;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .header {
+                border: 4px solid lightgreen;
+                height: 70px;
+            }
+
+            .nav {
+                border: 4px solid mediumorchid;
+                width: 100%;
+
+            }
+
+            .artdiv {
+                display: flex;
+
+            }
+
+            .article {
+                border: 4px solid cornflowerblue;
+                height: 300px;
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .gap {
+                flex-grow: 1;
+            }
+
+            .section {
+                border: 4px solid mediumorchid;
+            }
+
+            .footer {
+                border: 4px solid #f3cf5d;
+
+            }
+
+            .div {
+                border: 4px solid burlywood;
+                height: 300px;
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+
+            }
+
+            .aside {
+                height: 50%;
+                border: 4px solid aqua;
+
+            }
+
+            .height1 {
+                height: 40px;
+            }
+            .whidth1{width: 99.3%;}
+        </style>
+    </head>
+    <body>
+        <div class="header">header</div>
+        <div class="nav height1">nav</div>
+        <div class="artdiv">
+            <div class="article">article
+                <div class="header height1 whidth1">header</div>
+                <div class="gap"></div>
+                <div class="section height1 whidth1">section</div>
+                <div class="section height1 whidth1">section</div>
+                <div class="footer whidth1">footer</div>
+            </div>
+            <div class="div">div
+                <div class="aside">aside</div>
+                <div class="aside">aside</div>
+            </div>
+        </div>
+        <div class="footer height1">footer</div>
+    </body>
+</html>
