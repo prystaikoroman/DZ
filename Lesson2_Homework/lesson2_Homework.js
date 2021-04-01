@@ -197,10 +197,6 @@ for (hour; hour < 24; hour++) {
         for (seconds; seconds < 60; seconds++) {
         //      console.log(`${hour < 10 ? '0' + hour : hour}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`)
         }
-
-        // if (minutes === 20 && seconds === 0) {
-        //     break;
-        // }
         seconds = 0;
     }
     if (hour === 2 && minutes === 20 && seconds === 0) {
