@@ -215,166 +215,320 @@ console.log(newGamePC);
 // console.log(newCar);
 
 
-// - Створити клас який дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна.
-// додати в об'єкт функції:
-// -- drive () - яка виводить в консоль "їдемо зі швидкістю {максимальна швидкість} на годину"
-// -- info () - яка виводить всю інформацію про автомобіль
-// -- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed
-// -- changeYear (newValue) - змінює рік випуску на значення newValue
-// -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і доавляет його в поточний об'єкт car
-
-class BaseCar {
-    constructor(model, company, yearProduction, maxSpeed, engineVolume, drivers = []) {
-        this.model = model;
-        this.company = company;
-        this.yearProdaction = yearProduction;
-        this.maxSpeed = maxSpeed;
-        this.engineVolume = engineVolume;
-        this.drivers = drivers;
-    }
-
-    drive() {
-        console.log(`We driving with the speed of ${this.maxSpeed} p/h`);
-    }
-
-    info() {
-        let imgCar = document.createElement("img");
-        imgCar.src = `img/car.jpg`;
-        imgCar.height = "100";
-        document.body.appendChild(imgCar);
-        let divElement = document.createElement("div");
-        divElement.textContent = "Company: " + this.company;
-        document.body.appendChild(divElement);
-        document.write(`<div>model: "${this.model}"</div>`);
-        document.write(`<div>year production: ${this.yearProdaction}</div>`);
-        document.write(`<div>maximum speed: ${this.maxSpeed} mph</div>`);
-        document.write(`<div>engine volume: ${this.engineVolume} cu. in.</div>`);
-    }
-
-    increaseMaxSpeed(newSpeed) {
-        this.maxSpeed += newSpeed;
-    }
-
-    changeYear(newValue) {
-        this.yearProdaction = newValue;
-    }
-
-// -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і добавляє його в поточний об'єкт car
-    addDriver(driver) {
-        this.drivers.push(driver);
-    }
-}
-
-class BaseDriver {
-    constructor(name, age, gander, category) {
-        this.name = name;
-        this.age = age;
-        this.gander = gander;
-        this.category = category;
-    }
-}
-
-let driver1 = new BaseDriver('Igor', 56, "male", "B");
-let driver2 = new BaseDriver("Roman", 38, "male", "B");
-
-let newCar = new BaseCar("Challenger", "Dodge", 1969, 155.34, 426.01);
-newCar.info();
-newCar.addDriver(driver1);
-newCar.addDriver(driver2);
-newCar.increaseMaxSpeed(25);
-newCar.changeYear(1970);
-
-console.log(newCar);
-
-
+// // - Створити клас який дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна.
+// // додати в об'єкт функції:
+// // -- drive () - яка виводить в консоль "їдемо зі швидкістю {максимальна швидкість} на годину"
+// // -- info () - яка виводить всю інформацію про автомобіль
+// // -- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed
+// // -- changeYear (newValue) - змінює рік випуску на значення newValue
+// // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і доавляет його в поточний об'єкт car
 //
-// -створити класс попелюшка з полями ім'я, вік, розмір ноги
-// --Створити 10 попелюшок , покласти їх в масив
-// --Сторити об'єкт класу "принц" за допомоги класу який має поля ім'я, вік, туфелька яку він знайшов.
-// -- за допоиоги циклу знайти яка попелюшка повинна бути з принцом
+// class BaseCar {
+//     constructor(model, company, yearProduction, maxSpeed, engineVolume, drivers = []) {
+//         this.model = model;
+//         this.company = company;
+//         this.yearProdaction = yearProduction;
+//         this.maxSpeed = maxSpeed;
+//         this.engineVolume = engineVolume;
+//         this.drivers = drivers;
+//     }
 //
+//     drive() {
+//         console.log(`We driving with the speed of ${this.maxSpeed} p/h`);
+//     }
 //
-// -створити функцію конструктор попелюшка з полями ім'я, вік, розмір ноги
-// --Створити 10 попелюшок , покласти їх в масив
-// --Сторити об'єкт типу "принц" за допомоги функції конструктора з полями ім'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"
-// -- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
+//     info() {
+//         let imgCar = document.createElement("img");
+//         imgCar.src = `img/car.jpg`;
+//         imgCar.height = "100";
+//         document.body.appendChild(imgCar);
+//         let divElement = document.createElement("div");
+//         divElement.textContent = "Company: " + this.company;
+//         document.body.appendChild(divElement);
+//         document.write(`<div>model: "${this.model}"</div>`);
+//         document.write(`<div>year production: ${this.yearProdaction}</div>`);
+//         document.write(`<div>maximum speed: ${this.maxSpeed} mph</div>`);
+//         document.write(`<div>engine volume: ${this.engineVolume} cu. in.</div>`);
+//     }
 //
+//     increaseMaxSpeed(newSpeed) {
+//         this.maxSpeed += newSpeed;
+//     }
 //
-// ______________________________________________________________________________________________________________________________________________________
-// Додатково
-// ______________________________________________________________________________________________________________________________________________________
+//     changeYear(newValue) {
+//         this.yearProdaction = newValue;
+//     }
 //
-// -  Створити функцію конструктор для об'єкту який описує теги
-// Властивості
-// -назва тегу
-// - опис його дій
-// - масив з атрибутами (2-3 атрибути максимум)
-// Кожен атрибут описати як окремий який буде містити
-// -назву атрибуту
-// -опис дії атрибуту
-// інформацію брати з htmlbook.ru
-//
-function createTag(name, specification, atr) {
-    this.name = name;
-    this.specification = specification;
-    this.atr = atr;
-
-}
-
-// Таким чином описати теги
-// -a
-// -div
-// -h1
-// -span
-// -input
-// -form
-// -option
-// -select
-// Приклад результату
-// {
-//     titleOfTag: 'area',
-//         action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
-//     attrs: [
-//     {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
-//     {/*some props and values*/},
-//     {/*...*/},
-//     {/*...*/},
-// ]
-//
+// // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і добавляє його в поточний об'єкт car
+//     addDriver(driver) {
+//         this.drivers.push(driver);
+//     }
 // }
 //
-// -  Створити класс  для об'єкту який описує теги
-// Властивості
-// -назва тегу
-// - опис його дій
-// - масив з атрибутами (2-3 атрибути максимум)
-// Кожен атрибут описати як окремий який буде містити
-// -назву атрибуту
-// -опис дії атрибуту
-// інформацію брати з htmlbook.ru
-//
-// Таким чином описати теги
-// -a
-// -div
-// -h1
-// -span
-// -input
-// -form
-// -option
-// -select
-// Приклад результату
-// {
-//     titleOfTag: 'area',
-//         action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
-//     attrs: [
-//     {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
-//     {/*some props and values*/},
-//     {/*...*/},
-//     {/*...*/},
-// ]
-//
+// class BaseDriver {
+//     constructor(name, age, gander, category) {
+//         this.name = name;
+//         this.age = age;
+//         this.gander = gander;
+//         this.category = category;
+//     }
 // }
 //
+// let driver1 = new BaseDriver('Igor', 56, "male", "B");
+// let driver2 = new BaseDriver("Roman", 38, "male", "B");
+//
+// let newCar = new BaseCar("Challenger", "Dodge", 1969, 155.34, 426.01);
+// newCar.info();
+// newCar.addDriver(driver1);
+// newCar.addDriver(driver2);
+// newCar.increaseMaxSpeed(25);
+// newCar.changeYear(1970);
+//
+// console.log(newCar);
+
+
+// //
+// // -створити класс попелюшка з полями ім'я, вік, розмір ноги
+// // --Створити 10 попелюшок , покласти їх в масив
+// // --Сторити об'єкт класу "принц" за допомоги класу який має поля ім'я, вік, туфелька яку він знайшов.
+// // -- за допоиоги циклу знайти яка попелюшка повинна бути з принцом
+// class BaseCinderella {
+//     constructor(name, age, shoeSize) {
+//         this.name = name;
+//         this.age = age;
+//         this.shoeSize = shoeSize;
+//     }
+// }
+//
+// let cinderelas = [];
+// cinderelas.push(new BaseCinderella("Leticia", 21, 14));
+// cinderelas.push(new BaseCinderella("Francoise", 24, 8));
+// cinderelas.push(new BaseCinderella("Anna", 32, 10));
+// cinderelas.push(new BaseCinderella("Giselle", 43, 11));
+// cinderelas.push(new BaseCinderella("Ivette", 19, 9));
+// cinderelas.push(new BaseCinderella("Angelina", 27, 11));
+// cinderelas.push(new BaseCinderella("Tiffany", 32, 12));
+// cinderelas.push(new BaseCinderella("Mariam", 44, 7));
+// cinderelas.push(new BaseCinderella("Hardy", 32, 12));
+// cinderelas.push(new BaseCinderella("", 16, 7));
+//
+// class BasePrince {
+//     constructor(name, age, foundedShoe = {size: undefined, color: undefined}) {
+//         this.name = name;
+//         this.age = age;
+//         this.foundedShoe = foundedShoe;
+//     }
+//
+//     ChooseBride(cinderelas) {
+//         for (let i = 0; i < cinderelas.length; i++) {
+//             const cinderela = cinderelas[i];
+//             if (cinderela.shoeSize === this.foundedShoe.size) {
+//                 console.log(`We have a winner here name: ${cinderela.name} age:${cinderela.age} shoe size: ${cinderela.shoeSize}`);
+//             }
+//
+//         }
+//     }
+// }
+//
+// let princePersia = new BasePrince("Aladdin", 27, {size: 8, color: "red"});
+// princePersia.ChooseBride(cinderelas);
+
+
+// //
+// //
+// // -створити функцію конструктор попелюшка з полями ім'я, вік, розмір ноги
+// // --Створити 10 попелюшок , покласти їх в масив
+// // --Сторити об'єкт типу "принц" за допомоги функції конструктора з полями ім'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"
+// // -- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
+// function BaseCinderella(name, age, shoeSize)    {
+//         this.name = name;
+//         this.age = age;
+//         this.shoeSize = shoeSize;
+//     }
+//
+//     let cinderelas = [];
+//     cinderelas.push(new BaseCinderella("Leticia", 21, 14));
+//     cinderelas.push(new BaseCinderella("Francoise", 24, 8));
+//     cinderelas.push(new BaseCinderella("Anna", 32, 10));
+//     cinderelas.push(new BaseCinderella("Giselle", 43, 11));
+//     cinderelas.push(new BaseCinderella("Ivette", 19, 9));
+//     cinderelas.push(new BaseCinderella("Angelina", 27, 11));
+//     cinderelas.push(new BaseCinderella("Tiffany", 32, 12));
+//     cinderelas.push(new BaseCinderella("Mariam", 44, 7));
+//     cinderelas.push(new BaseCinderella("Hardy", 32, 12));
+//     cinderelas.push(new BaseCinderella("", 16, 7));
+//
+//     function BasePrince(name, age, foundedShoe = {size: undefined, color: undefined}) {
+//         this.name = name;
+//         this.age = age;
+//         this.foundedShoe = foundedShoe;
+//
+//        this.ChooseBride = function (cinderelas)
+//         {
+//             for (let i = 0; i < cinderelas.length; i++) {
+//                 const cinderela = cinderelas[i];
+//                 if (cinderela.shoeSize === this.foundedShoe.size) {
+//                     console.log(`We have a winner here name: ${cinderela.name} age:${cinderela.age} shoe size: ${cinderela.shoeSize}`);
+//                 }
+//             }
+//         }
+//     }
+//
+//
+//
+// let princePersia = new BasePrince("Aladdin", 27, {size: 14, color: "red"});
+// princePersia.ChooseBride(cinderelas);
+
+
+// //
+// //
+// // ______________________________________________________________________________________________________________________________________________________
+// // Додатково
+// // ______________________________________________________________________________________________________________________________________________________
+// //
+// // -  Створити функцію конструктор для об'єкту який описує теги
+// // Властивості
+// // -назва тегу
+// // - опис його дій
+// // - масив з атрибутами (2-3 атрибути максимум)
+// // Кожен атрибут описати як окремий який буде містити
+// // -назву атрибуту
+// // -опис дії атрибуту
+// // інформацію брати з htmlbook.ru
+// //
+//
+// // Таким чином описати теги
+// // -a
+// // -div
+// // -h1
+// // -span
+// // -input
+// // -form
+// // -option
+// // -select
+// // Приклад результату
+// // {
+// //     titleOfTag: 'area',
+// //         action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
+// //     attrs: [
+// //     {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
+// //     {/*some props and values*/},
+// //     {/*...*/},
+// //     {/*...*/},
+// // ]
+// //
+// // }
+//
+// function TagFunc (name, spec, atr){
+//     this.name = name;
+//     this.spec = spec;
+//     this.atr = atr;
+//     this.descr = function (){
+//         console.log(this);
+//     }
+// }
+// function AtrFunc(name, spec){
+//     this.name = name;
+//     this.spec = spec;
+//     this.descr = function (){
+//         console.log(this);
+//     }
+//     }
+//
+//
+//
+// let spec = "Тег <a> является одним из важных элементов HTML и предназначен для создания ссылок." +
+//     " В зависимости от присутствия атрибутов name или href тег <a> устанавливает ссылку или якорь." +
+//     " Якорем называется закладка внутри страницы, которую можно указать в качестве цели ссылки. " +
+//     "При использовании ссылки, которая указывает на якорь, происходит переход к закладке внутри веб-страницы.\n" +
+//     "Для создания ссылки необходимо сообщить браузеру, что является ссылкой, а также указать адрес документа," +
+//     " на который следует сделать ссылку. В качестве значения атрибута href используется адрес документа " +
+//     "(URL, Universal Resource Locator, универсальный указатель ресурсов), на который происходит переход. " +
+//     "Адрес ссылки может быть абсолютным и относительным. Абсолютные адреса работают везде и всюду независимо " +
+//     "от имени сайта или веб-страницы, где прописана ссылка. Относительные ссылки, как следует из их названия," +
+//     " построены относительно текущего документа или корня сайта.";
+// let atr1 = new AtrFunc("accesskey", "Активация ссылки с помощью комбинации клавиш.");
+// let atr2 = new AtrFunc("coords", "Устанавливает координаты активной области.");
+// let atr3 = new AtrFunc("download", "Предлагает скачать указанный по ссылке файл.");
+// let atr4 = new AtrFunc("href", "Задает адрес документа, на который следует перейти.");
+//
+//     let tag1 = new TagFunc("<a>", spec, [atr1,atr2,atr3,atr4]);
+// tag1.descr();
+//
+
+
+// // -  Створити класс  для об'єкту який описує теги
+// // Властивості
+// // -назва тегу
+// // - опис його дій
+// // - масив з атрибутами (2-3 атрибути максимум)
+// // Кожен атрибут описати як окремий який буде містити
+// // -назву атрибуту
+// // -опис дії атрибуту
+// // інформацію брати з htmlbook.ru
+// //
+// // Таким чином описати теги
+// // -a
+// // -div
+// // -h1
+// // -span
+// // -input
+// // -form
+// // -option
+// // -select
+// // Приклад результату
+// // {
+// //     titleOfTag: 'area',
+// //         action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
+// //     attrs: [
+// //     {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
+// //     {/*some props and values*/},
+// //     {/*...*/},
+// //     {/*...*/},
+// // ]
+// //
+// // }
+// //
+// class TagFunc {
+//     constructor(name, spec, atr) {
+//         this.name = name;
+//         this.spec = spec;
+//         this.atr = atr;
+//     }
+//
+//     descr() {
+//         console.log(this);
+//     }
+// }
+//
+// class AtrFunc {
+//     constructor(name, spec) {
+//         this.name = name;
+//         this.spec = spec;
+//     }
+//
+//     descr() {
+//         console.log(this);
+//     }
+// }
+//
+// let spec = "Тег <a> является одним из важных элементов HTML и предназначен для создания ссылок." +
+//     " В зависимости от присутствия атрибутов name или href тег <a> устанавливает ссылку или якорь." +
+//     " Якорем называется закладка внутри страницы, которую можно указать в качестве цели ссылки. " +
+//     "При использовании ссылки, которая указывает на якорь, происходит переход к закладке внутри веб-страницы.\n" +
+//     "Для создания ссылки необходимо сообщить браузеру, что является ссылкой, а также указать адрес документа," +
+//     " на который следует сделать ссылку. В качестве значения атрибута href используется адрес документа " +
+//     "(URL, Universal Resource Locator, универсальный указатель ресурсов), на который происходит переход. " +
+//     "Адрес ссылки может быть абсолютным и относительным. Абсолютные адреса работают везде и всюду независимо " +
+//     "от имени сайта или веб-страницы, где прописана ссылка. Относительные ссылки, как следует из их названия," +
+//     " построены относительно текущего документа или корня сайта.";
+// let atr1 = new AtrFunc("accesskey", "Активация ссылки с помощью комбинации клавиш.");
+// let atr2 = new AtrFunc("coords", "Устанавливает координаты активной области.");
+// let atr3 = new AtrFunc("download", "Предлагает скачать указанный по ссылке файл.");
+// let atr4 = new AtrFunc("href", "Задает адрес документа, на который следует перейти.");
+//
+// let tag1 = new TagFunc("<a>", spec, [atr1, atr2, atr3, atr4]);
+// tag1.descr();
 
 
 // // -- Створити об'єкт car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
