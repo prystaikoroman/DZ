@@ -100,20 +100,18 @@
 let curPicPos = 1;
 console.log(document.dir);
 document.getElementById("back").onclick = (ev) => {
-    if(curPicPos > 1)
-    {
+    if (curPicPos > 1) {
         curPicPos--;
         const picBox = document.getElementById("pictureBox");
-        picBox.setAttribute("src", `img/${curPicPos<10?'0'+curPicPos: curPicPos}.jpg`);
+        picBox.setAttribute("src", `img/${curPicPos < 10 ? '0' + curPicPos : curPicPos}.jpg`);
     }
 }
 document.getElementById("forward").onclick = (ev) => {
-    if(curPicPos < 14)
-    {
+    if (curPicPos < 14) {
         curPicPos++;
         const picBox = document.getElementById("pictureBox");
-        picBox.setAttribute("src", `img/${curPicPos<10?'0'+curPicPos: curPicPos}.jpg`);
-   }
+        picBox.setAttribute("src", `img/${curPicPos < 10 ? '0' + curPicPos : curPicPos}.jpg`);
+    }
 }
 
 //
@@ -123,9 +121,9 @@ document.getElementById("forward").onclick = (ev) => {
 //
 //
 // - Сворити масив нецензцрних слів.
-let arrForbidenWords = ['abc','cola','cbs','nbc','fox'];
+let arrForbidenWords = ['abc', 'cola', 'cbs', 'nbc', 'fox'];
 // //     Сворити інпут текстового типу.
- let input2 = document.getElementById('someText2');
+let input2 = document.getElementById('someText2');
 // //     Якщо людина вводить слово і воно міститься
 // //     в масиві нецензурних слів кинути алерт з попередженням.
 // //     Перевірку робити при натисканні на кнопку
@@ -145,15 +143,14 @@ let arrForbidenWords = ['abc','cola','cbs','nbc','fox'];
 //     Кинути алерт з попередженням у випадку якщо містить.
 //     Перевірку робити при натисканні на кнопку
 const btnOk = document.getElementById('okBtn');
-btnOk.onclick = (ev) =>{
-   let enteredWords = input2.value.split(' ');
-    for (let i = 0; i< enteredWords.length; i++) {
-            arrForbidenWords.forEach((value) =>{
-             value===enteredWords[i]?alert(`you entered forbiden word: ${value}`):0;
+btnOk.onclick = (ev) => {
+    let enteredWords = input2.value.split(' ');
+    for (let i = 0; i < enteredWords.length; i++) {
+        arrForbidenWords.forEach((value) => {
+            value === enteredWords[i] ? alert(`you entered forbiden word: ${value}`) : 0;
         })
     }
 };
-
 
 
 // -- Взяти масив юзерів
@@ -170,8 +167,64 @@ const usersWithAddress = [
     {id: 7, name: 'olya', age: 31, isMarried: false, address: {city: 'Lviv', street: 'Naukova', number: 16}},
     {id: 11, name: 'max', age: 31, isMarried: true, address: {city: 'Rivne', street: 'Ivana Franka', number: 121}}
 ];
-// Створити три чекбокси. Кожний з них активує фільтр для вищевказаного масиву. Фільтри можуть працювати як разом так і окремо.
+
+// console.log(userFiltered);
+// Створити три чекбокси. Кожний з них активує фільтр для вищевказаного масиву.
+// Фільтри можуть працювати як разом так і окремо.
+const myForm2 = document.forms.form2;
+const table = document.createElement('table');
+
+document.getElementById("townKyiv").onclick = (ev) => {
+    filterUsers(myForm2);
+};
+document.getElementById("married").onclick = (ev) => {
+    filterUsers(myForm2);
+};
+document.getElementById("age").onclick = (ev) => {
+    filterUsers(myForm2);
+};
 // 1й - відфільтровує юзерів зі статусом false (залишає зі статусом false)
 // 2й - залишає старших 29 років включно
 // 3й - залишає тих в кого місто Київ
+function filterUsers(myForm2) {
+    let [...userFiltered] = usersWithAddress;
+    if (myForm2.townKyiv.checked) {
+        userFiltered = userFiltered.reduce((acc, value) =>
+                value.address.city === "Kyiv" ? [...acc, value] : acc
+            , []);
+    } if (myForm2.married.checked) {
+        userFiltered = userFiltered.reduce((acc, value) =>
+                !value.isMarried ? [...acc, value] : acc
+            , []);
+
+    } if (myForm2.age.checked) {
+        userFiltered = userFiltered.reduce((acc, value) =>
+                value.age >29 ? [...acc, value] : acc
+            , []);
+
+    }
+     console.log(userFiltered.flat());
+    TableCreator(userFiltered.length, Object.keys( usersWithAddress[0]).length,'div', userFiltered);
+}
+
 // Дані виводить в документ
+
+function TableCreator(rows, column, el = 'p', arr = []) {
+    let rowCount = table.rows.length;
+    for (let x=rowCount-1; x>0; x--) {
+        table.deleteRow(x);
+    }
+    console.log(rows, Object.keys( usersWithAddress[0]).length)
+    for (let i = 0; i < rows; i++) {
+        const row = table.insertRow(i);
+        for (let j = 0; j < column; j++) {
+            console.log((Object.keys(arr[i]))[j])
+            const column = row.insertCell(j);
+            const givenElem = document.createElement(el);
+            givenElem.innerHTML = ` ${(Object.keys(arr[i]))[j]} : ${(Object.values(arr[i]))[j]}  `;
+            column.appendChild(givenElem);
+        }
+    }
+    document.body.appendChild(table);
+}
+
