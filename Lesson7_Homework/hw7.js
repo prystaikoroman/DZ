@@ -201,9 +201,8 @@ function filterUsers(myForm2) {
         userFiltered = userFiltered.reduce((acc, value) =>
                 value.age >29 ? [...acc, value] : acc
             , []);
-
     }
-     console.log(userFiltered.flat());
+     // console.log(userFiltered.flat());
     TableCreator(userFiltered.length, Object.keys( usersWithAddress[0]).length,'div', userFiltered);
 }
 
@@ -218,10 +217,10 @@ function TableCreator(rows, column, el = 'p', arr = []) {
     for (let i = 0; i < rows; i++) {
         const row = table.insertRow(i);
         for (let j = 0; j < column; j++) {
-            console.log((Object.keys(arr[i]))[j])
-            const column = row.insertCell(j);
+              const column = row.insertCell(j);
             const givenElem = document.createElement(el);
-            givenElem.innerHTML = ` ${(Object.keys(arr[i]))[j]} : ${(Object.values(arr[i]))[j]}  `;
+            givenElem.innerHTML = ` ${(Object.keys(arr[i]))[j]} 
+                                    : ${typeof (Object.values(arr[i])[j]) === 'object' ? Object.values(arr[i])[j].city: (Object.values(arr[i]))[j]}  `;
             column.appendChild(givenElem);
         }
     }
