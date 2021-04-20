@@ -9,7 +9,7 @@
 //
 // inputBox.onkeyup = (ev) =>{
 //     let storage1 = localStorage.getItem(inputBox.id);
-//      storage1?localStorage.removeItem(inputBox.id):undefined;
+//      // storage1?localStorage.removeItem(inputBox.id):undefined;
 //     localStorage.setItem(inputBox.id, inputBox.value);
 //  };
 
@@ -21,8 +21,29 @@
 // Сделайте так, чтобы при следующем заходе на страницу
 // введенные им ранее данные стояли на своих местах.
 //     Сделайте ваш скрипт как можно более универсальным.
-const mainForm = document.getElementById(fo);
+const mainForm = document.getElementById("form1");
+for (const tag of mainForm) {
+    console.log(tag);
+    if (tag.type === "radio" && tag.id ===localStorage.getItem(tag.name)) {
+        tag.checked = true;
+    } else if (tag.type === 'checkbox') {
+        tag.checked = localStorage.getItem(tag.id);
+    } else {
+        tag.value = localStorage.getItem(tag.id, tag.value);
+    }
 
+}
+mainForm.oninput = ({target: {type, name, id, value, checked}}) => {
+    if (type === "radio") {
+        localStorage.setItem(name, id);
+    } else if (type === 'checkbox') {
+        localStorage.setItem(id, checked);
+    } else {
+        localStorage.setItem(id, value);
+    }
+
+
+};
 
 //
 // -Дан текстареа. В него можно ввести данные, нажать кнопку "сохранить" и они "фикисруются" (в хранилище), затем поредактировать их, затем еще поредактировать и возможно еще.....
